@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../RecorderAudio.swift">
+   </FileRef>
+   <FileRef
       location = "self:Pitch Perfect.xcodeproj">
    </FileRef>
 </Workspace>

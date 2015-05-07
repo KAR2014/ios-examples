@@ -2,13 +2,14 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="UQl-q6-6fl">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Record-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" customClass="RecordSoundsViewController" customModule="Pitch_Perfect" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -39,7 +40,6 @@
                                 </state>
                                 <connections>
                                     <action selector="stopAudio:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="ZKi-Ao-gIV"/>
-                                    <segue destination="yiH-m3-BbX" kind="show" id="FcX-YA-XfO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,6 +89,7 @@
                         <outlet property="recordButton" destination="ZqQ-Yp-q0g" id="fyn-5g-aMC"/>
                         <outlet property="recordinginProgress" destination="cZN-or-nbm" id="ktm-IX-qsv"/>
                         <outlet property="stopButton" destination="TuJ-DX-mj6" id="6CS-gx-hjE"/>
+                        <segue destination="yiH-m3-BbX" kind="show" identifier="stopRecording" id="pcJ-x6-KKC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
@@ -104,6 +105,7 @@
                         <viewControllerLayoutGuide type="bottom" id="mqj-it-hlA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Mch-fT-XML">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YaK-CU-LhB">
@@ -115,28 +117,62 @@
                                     <action selector="PlaySlowAudio:" destination="yiH-m3-BbX" eventType="touchUpInside" id="Cg4-81-Rf9"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t56-47-ZGg">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="rabit">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="PlayFastAudio:" destination="yiH-m3-BbX" eventType="touchUpInside" id="VM0-Xs-5H1"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L9U-I4-79w">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <state key="normal" image="stopbutton">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="StopPlay:" destination="yiH-m3-BbX" eventType="touchUpInside" id="9ym-Xs-TbW"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.78823536630000002" green="0.9450981021" blue="0.69411766529999996" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="t56-47-ZGg" secondAttribute="trailing" constant="30" id="1TQ-6a-h5r"/>
                             <constraint firstItem="YaK-CU-LhB" firstAttribute="top" secondItem="eAO-DG-G3P" secondAttribute="bottom" constant="50" id="4k2-5d-tv9"/>
+                            <constraint firstAttribute="centerX" secondItem="L9U-I4-79w" secondAttribute="centerX" constant="-5" id="BXa-mR-cXF"/>
+                            <constraint firstItem="t56-47-ZGg" firstAttribute="top" secondItem="eAO-DG-G3P" secondAttribute="bottom" constant="50" id="JaF-2H-XdE"/>
+                            <constraint firstAttribute="centerY" secondItem="L9U-I4-79w" secondAttribute="centerY" constant="-203" id="gRO-qc-dvj"/>
                             <constraint firstItem="YaK-CU-LhB" firstAttribute="leading" secondItem="Mch-fT-XML" secondAttribute="leadingMargin" constant="30" id="y5o-be-Loq"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="YaK-CU-LhB"/>
+                                <exclude reference="t56-47-ZGg"/>
+                                <exclude reference="L9U-I4-79w"/>
                             </mask>
                             <mask key="constraints">
+                                <exclude reference="BXa-mR-cXF"/>
+                                <exclude reference="gRO-qc-dvj"/>
                                 <exclude reference="4k2-5d-tv9"/>
                                 <exclude reference="y5o-be-Loq"/>
+                                <exclude reference="1TQ-6a-h5r"/>
+                                <exclude reference="JaF-2H-XdE"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="YaK-CU-LhB"/>
+                                <include reference="t56-47-ZGg"/>
+                                <include reference="L9U-I4-79w"/>
                             </mask>
                             <mask key="constraints">
+                                <include reference="BXa-mR-cXF"/>
+                                <include reference="gRO-qc-dvj"/>
                                 <include reference="4k2-5d-tv9"/>
                                 <include reference="y5o-be-Loq"/>
+                                <include reference="1TQ-6a-h5r"/>
+                                <include reference="JaF-2H-XdE"/>
                             </mask>
                         </variation>
                     </view>
@@ -167,6 +203,7 @@
     <resources>
         <image name="caracol" width="100" height="100"/>
         <image name="microphone" width="100" height="100"/>
+        <image name="rabit" width="100" height="100"/>
         <image name="stopbutton" width="50" height="50"/>
     </resources>
 </document>
