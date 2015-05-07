@@ -64,6 +64,8 @@ class PlaySoundViewController: UIViewController {
     @IBAction func StopPlay(sender: UIButton) {
         //Stop audio here...
         audioPlayer.stop()
+        audioEngine.stop()
+        audioEngine.reset()
     }
     
     
@@ -98,6 +100,10 @@ class PlaySoundViewController: UIViewController {
         }
 
     
+    @IBAction func playDarthvaderAudio(sender: UIButton) {
+        playAudioWithVariablePitch(-1000)
+        
+    }
     
     
     /*
